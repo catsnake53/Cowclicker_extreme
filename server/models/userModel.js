@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 //change this
-const MONGO_URI = "";
+const MONGO_URI = "mongodb+srv://cera:Dgafes1234!@cluster0.fvxj16i.mongodb.net/?retryWrites=true&w=majority";
 
 //change this
 mongoose.connect(MONGO_URI, {
-	dbName: 'wunder-octopus',
+	dbName: 'cat-snake',
 })
 	.then(() => console.log('Connected to Mongo DB.'))
   .catch(err => console.log(err));
