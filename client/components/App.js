@@ -64,6 +64,9 @@ function App(props) {
 		})
 	}
 
+	// working autosave code
+	useEffect(() => { saveGameHandler() }, [props])
+
 	//loads game FROM db
 	function loadGameHandler() {
 		let url = `/api/savegame/${username}`
