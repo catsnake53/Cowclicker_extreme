@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
-//change this
 const MONGO_URI = "mongodb+srv://cera:Dgafes1234!@cluster0.fvxj16i.mongodb.net/?retryWrites=true&w=majority"
+
 //change this
 mongoose.connect(MONGO_URI, {
 	dbName: 'cat-snake',
