@@ -136,3 +136,13 @@ body {
     transform: scale(1.025);
     transition: all 0.25s ease-in-out;
 }
+
+/* Leaderboard Styling */
+.leaderboard{
+    background-color: #FFD384;
+    color: white;
+    padding: 10px;
+    border: thin solid black;
+    border-radius: 15px;
+    width: 100%;
+}
