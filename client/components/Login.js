@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Login.css'
+import { Leaderboard } from './Leaderboard.js';
 // import background from "./assets/cloudsbackground.jpg";
 
 export function LoginPage(props) {
@@ -56,7 +57,10 @@ export function LoginPage(props) {
                 <div className="loginSubmitContainer">
                     <input type="submit" onClick={() => {handleClick()}} className="loginButton"/>
                 </div>
-               { signup ? <div><p>Already have an account?</p><button onClick={() => {toggleSignUp(false)}}>Return to Login</button></div> : <div className="signupToggle"> <p>Don't have an account?</p><button onClick={() => {toggleSignUp(true)}}>Sign Up</button></div>}
+               { signup ? <div><p>Already have an account?</p><button className='signupButton' onClick={() => {toggleSignUp(false)}}>Return to Login</button></div> : <div className="signupToggle"> <p>Don't have an account?</p><button class = 'signupButton' onClick={() => {toggleSignUp(true)}}>Sign Up</button></div>}
+               <div>
+                    <Leaderboard/>
+                </div>
             </div>
         </div>
     )
