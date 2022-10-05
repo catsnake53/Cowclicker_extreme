@@ -85,8 +85,8 @@ userController.saveGame = (req, res, next) => {
         return next();
     })
       .catch((e) => {
-        console.log('data', data);
-        console.log('error obj', e);
+        // console.log('data', data);
+        // console.log('error obj', e);
         return next(e);
     }); 
 };
