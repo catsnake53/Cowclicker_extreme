@@ -11,6 +11,7 @@ const initialState = {
 	username: '',
 	cowCost: 10,
 	fieldCost: 100,
+	gameStage: 0,
 };
 
 const cowsReducers = (state = initialState, action) => {
@@ -121,6 +122,15 @@ const cowsReducers = (state = initialState, action) => {
 			return {
 				...state,
 				loggedIn: true ? false : true,
+			};
+		};
+		case types.GAME_STAGE_LEVEL_UP: {
+			const newStage = state.gameStage += 1;
+			const newMultiplier = state.currentMultiplier += 2;
+			return {
+				...state,
+				gameStage: newStage,
+				currentMultiplier: newMultiplier,
 			}
 		}
 		default: {

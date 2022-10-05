@@ -38,6 +38,7 @@ export function ShopContainer(props) {
               <div className="shopOptions">
                   <CowUpgrade totalCowCost={cow_Cost} />
                   <FieldUpgrade totalfieldCost={fieldCost} />
+                  {/* New multiplier component */}
               </div>
           </div>
       </div>
