@@ -21,6 +21,7 @@ const userSchema = new Schema({
 
 const gameSaveSchema = new Schema({
 	username: { type: String, required: true, unique: true },
+	totalScore: { type: Number, require: true },
 	milk: { type: Number, require: true },
 	totalCows: { type: Number, require: true },
 	totalFields: { type: Number, require: true },

@@ -105,4 +105,16 @@ userController.loadGame = (req, res, next) => {
         });
 };
 
+userController.allSaves = (req, res, next) => {
+    gameSave.find({})
+        .then((data) => {
+            res.locals.scores = data;
+            return next();
+        })
+        .catch((e) => {
+            console.log(error);
+            return next(e);
+        });
+};
+
 module.exports = userController;

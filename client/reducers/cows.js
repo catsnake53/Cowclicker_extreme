@@ -1,6 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
+	totalScore : 0,
 	devMode: false,
 	milk: 0,
 	totalCows: 0,
@@ -83,23 +84,27 @@ const cowsReducers = ( state = initialState, action ) => {
 			const currMilkFromCows = (state.totalCows * state.currentMultiplier);
 			const currMilkFromFields =  (state.totalFields * 5) * state.currentMultiplier;
 			const currMilk = state.milk + currMilkFromCows + currMilkFromFields;
-
+			const currScore = state.totalScore + currMilkFromCows + currMilkFromFields;
+			console.log(currScore);
 			return {
 				...state,
 				milk: currMilk,
+				totalScore: currScore
 			};
 		};
 		case types.CLICK: {
 			// console.log("INSTATE", state)
 			//handles click on cow to add one milk
-			let currMilk;
 			console.log("DEV MODE STATE", state.devMode)
-			// if (state.devMode === false) 
-			currMilk = state.milk += 1;
+			// if (state.devMode === false)  
+			const currMilk = state.milk += 1;
+			const currScore = state.totalScore += 1;
 			// else currMilk = state.milk += 10000;
+			console.log(currScore);
 			return {
 				...state,
 				milk: currMilk,
+				totalScore: currScore
 			};
 		};
 		case types.USER: { //Does user login need to be done through state?

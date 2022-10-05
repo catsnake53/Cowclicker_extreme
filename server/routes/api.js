@@ -11,6 +11,10 @@ router.get('/', (req, res) => {
 	res.status(400).json('Routed to /api/, please choose a further route')
 });
 
+router.get('/leaderboard', userController.allSaves, (req, res) => {
+	return res.status(200).json(res.locals.scores);
+})
+
 //add sessionController and cookieController middleware
 router.post('/signup', userController.createUser, (req, res, next) => {
 	console.log('signp route, in api.js')
