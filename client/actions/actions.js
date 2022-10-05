@@ -34,3 +34,7 @@ export const userActionCreator = (username) => ({
 export const loggedInActionCreator = () => ({
 	type: types.LOGGED_IN,
 });
+
+export const gameStageLevelUp = () => ({
+	type: types.GAME_STAGE_LEVEL_UP,
+})

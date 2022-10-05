@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
-const MONGO_URI = "mongodb+srv://cera:Dgafes1234!@cluster0.fvxj16i.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI = "mongodb+srv://katalystkat:2Nf3g8BgmGnkqQiM@fitdevs.s392t6z.mongodb.net/?retryWrites=true&w=majority";
 
 //change this
 mongoose.connect(MONGO_URI, {
@@ -27,6 +27,7 @@ const gameSaveSchema = new Schema({
 	currentMultiplier: { type: Number, require: true },
 	cowCost: { type: Number, require: true },
 	fieldCost: { type: Number, require: true },
+	gameStage: { type: Number, require: true },
 });
 
 const gameSave = mongoose.model('gameSave', gameSaveSchema);
