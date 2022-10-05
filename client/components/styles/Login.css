@@ -144,5 +144,9 @@ body {
     padding: 10px;
     border: thin solid black;
     border-radius: 15px;
-    width: 100%;
+    width: 300px;
+}
+
+.leaderboard-title {
+    text-align: center;
 }

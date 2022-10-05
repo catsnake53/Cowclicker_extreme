@@ -45,7 +45,7 @@ export function Leaderboard(props) {
 
     return(
         <div className="leaderboard">
-            <strong>~~~~~~~FARMHAND HALL OF FAME~~~~~~~</strong>
+            <div className='leaderboard-title'><strong>FARMHAND HALL OF FAME</strong></div>
             <ol>
                 {(leaderBoardArray) ? leaderBoardArray : <span>Loading Leaderboard...</span>}
             </ol>
