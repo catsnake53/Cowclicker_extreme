@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {LoginPage} from './Login'
+import React, { useEffect, useState } from 'react';
+import { LoginPage } from './Login'
 import { Game } from './Game';
 import { connect, useStore, useDispatch } from 'react-redux';
-import {loadGameActionCreator} from '../actions/actions.js';
+import { loadGameActionCreator } from '../actions/actions.js';
 
 //main div, highest component
 //login screen
 function App(props) {
-	const [LoggedIn, toggleLoggedIn ] = useState(false);
+	const [LoggedIn, toggleLoggedIn] = useState(false);
 	const [attached, setAttach] = useState(false);
 	const [username, setUsername] = useState('');
 	const dispatch = useDispatch();
@@ -32,18 +32,18 @@ function App(props) {
 				headers: {
 					'Accept': "application/json, text/plain, */*",
 					'Content-Type': 'application/json',
-				  },
+				},
 			})
 				.then((response) => {
-				return response.json();
-			}).then((data)=> {
-				dispatch(loadGameActionCreator(data))
-			})
+					return response.json();
+				}).then((data) => {
+					dispatch(loadGameActionCreator(data))
+				})
 		}
 	}, [LoggedIn])
 
-	useEffect(() => console.log("PROPS", username, props.savedState), [props, username])
-	
+	// useEffect(() => console.log("PROPS", username, props.savedState), [props, username])
+
 
 	//saves the game to db
 	function saveGameHandler() {
@@ -52,16 +52,16 @@ function App(props) {
 
 		fetch('/api/savegame', {
 			method: 'POST',
-            headers: {
-                'Accept': "application/json, text/plain",
-                'Content-Type': 'application/json',
-                'x-Trigger': 'CORS'
-              },
-              body: JSON.stringify(reqBody)
+			headers: {
+				'Accept': "application/json, text/plain",
+				'Content-Type': 'application/json',
+				'x-Trigger': 'CORS'
+			},
+			body: JSON.stringify(reqBody)
 		})
-		.then((res) => {
-			console.log(res)
-		})
+			.then((res) => {
+				// console.log(res)
+			})
 	}
 
 	// working autosave code
@@ -72,34 +72,34 @@ function App(props) {
 		let url = `/api/savegame/${username}`
 		fetch(url, {
 			method: 'GET',
-            headers: {
-                'Accept': "application/json, text/plain, */*",
-                'Content-Type': 'application/json',
-              },
+			headers: {
+				'Accept': "application/json, text/plain, */*",
+				'Content-Type': 'application/json',
+			},
 		})
 			.then((response) => {
-			return response.json();
-		}).then((data)=> {
-			dispatch(loadGameActionCreator(data))
-		})
+				return response.json();
+			}).then((data) => {
+				dispatch(loadGameActionCreator(data))
+			})
 	}
 
 	//check if state authentication returns true, if yes, render game, otherwise render login page
 	return (
 		<>
-		{LoggedIn && <div className="saveGameContainer">
+			{/* {LoggedIn && <div className="saveGameContainer">
 			<button onClick={saveGameHandler} id="saveGame">Save</button>
-		</div>}
-		{LoggedIn ? <Game saveGame={saveGameHandler} /> : <LoginPage loginHandler={loginHandler} />}
+		</div>} */}
+			{LoggedIn ? <Game saveGame={saveGameHandler} stats={props.savedState} /> : <LoginPage loginHandler={loginHandler} />}
 		</>
 	);
 };
 
 
-const mapStateToProps = function(state) {
-    return {
-       savedState: state.cows
-    }
+const mapStateToProps = function (state) {
+	return {
+		savedState: state.cows
+	}
 }
 
-export default connect(mapStateToProps, null) (App);
+export default connect(mapStateToProps, null)(App);

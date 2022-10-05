@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
-//change this
-const MONGO_URI = "mongodb+srv://katalystkat:2Nf3g8BgmGnkqQiM@fitdevs.s392t6z.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI = "mongodb+srv://cera:Dgafes1234!@cluster0.fvxj16i.mongodb.net/?retryWrites=true&w=majority"
+
 //change this
 mongoose.connect(MONGO_URI, {
 	dbName: 'cat-snake',
 })
 	.then(() => console.log('Connected to Mongo DB.'))
-  .catch(err => console.log(err));
+	.catch(err => console.log(err));
 
 
-	//EXPAND ON SCHEMA IF NECESSARY, IE, TO STORE GAME STATE
+//EXPAND ON SCHEMA IF NECESSARY, IE, TO STORE GAME STATE
 const userSchema = new Schema({
 	username: { type: String, required: true, unique: true },
-	password: { type: String, required: true}
+	password: { type: String, required: true }
 });
 
 const gameSaveSchema = new Schema({

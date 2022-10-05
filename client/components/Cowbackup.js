@@ -5,51 +5,29 @@ import { bindActionCreators } from 'redux';
 
 
 function CowContainer(props) {
-  const [tinyCows, setTinyCows] = useState([]);
+    const dispatch = useDispatch();
+    const store = useStore()
 
-  const dispatch = useDispatch();
-  const store = useStore()
-
-  // this function returns an integer between min and max (inclusive)
-  function setRandomPos(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  function generateCow(cows) {
+    // console.log('stats on Cow.js', props.stats.totalCows)
     const arr = [];
-    const cowDisplay = document.querySelector('.cowDisplay');
-    const width = cowDisplay.offsetWidth;
-    const height = cowDisplay.offsetHeight;
 
-    for (let i = 0; i < cows; i++) {
-      const top = setRandomPos(0, height - 100);
-      const left = setRandomPos(0, width - 100);
-      arr.push(<div className="smallCows" style={{ top: top, left: left }}><img src={'https://i.imgur.com/edUEWen.png'} alt="" /></div>)
+    for (let i = 0; i < props.stats.totalCows; i++) {
+        arr.push(<div className="smallCows"><img src={'https://i.imgur.com/sQusjAS.png'} alt="" /></div>)
     }
-    console.log(arr)
-    return arr;
-  }
-  // console.log('stats on Cow.js', props.stats.totalCows)
 
-  useEffect(() => {
-    setTinyCows(generateCow(props.stats.totalCows));
-  }, [props.stats.totalCows]);
-
-  return (
-    <div className="cowContainerDiv" >
-      <div className="cowDisplay">
-        {(tinyCows) ? tinyCows : null}
-      </div>
-      <div onClick={() => {
-        dispatch(clickCowActionCreator())
-        console.log(store.getState())
-      }} className="hitbox" id="hitbox">
-        <img src={'https://i.imgur.com/edUEWen.png'} alt="" />
-      </div>
-      {/* you can take this part out....... if you dare.... */}
-      {/* <div onClick={() => {
+    return (
+        <div className="cowContainerDiv" >
+            <div className="cowDisplay">
+                {arr}
+            </div>
+            <div onClick={() => {
+                dispatch(clickCowActionCreator())
+                console.log(store.getState())
+            }} className="hitbox" id="hitbox">
+                <img src={'https://i.imgur.com/sQusjAS.png'} alt="" />
+            </div>
+            {/* you can take this part out....... if you dare.... */}
+            {/* <div onClick={() => {
             dispatch(clickCowActionCreator())
             console.log(store.getState())
           }} className="hitbox" id="hitbox2">
@@ -73,14 +51,14 @@ function CowContainer(props) {
           }} className="hitbox" id="hitbox5">
               <img height="100px" id="extraCows" width="100px" src={'https://i.imgur.com/fqmapJJ.png'} alt="" />
           </div> */}
-    </div>
-  )
+        </div>
+    )
 }
 
 function mapDispatchToProps(dispatch) {
-  return ({
-    clickCow: () => dispatch({ type: 'CLICK' })
-  })
+    return ({
+        clickCow: () => dispatch({ type: 'CLICK' })
+    })
 }
 
 export default connect(mapDispatchToProps)(CowContainer);
