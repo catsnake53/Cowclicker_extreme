@@ -159,8 +159,8 @@ const cowsReducers = (state = initialState, action) => {
 			// const milkFromFields = state.totalFields * fieldMultiplier;
 			// currMilk = currMilk + (milkFromCows + milkFromFields);
 			//temporary simple version
-			const currMilkFromCows = (state.totalCows * state.currentMultiplier);
-			const currMilkFromFields = (state.totalFields * 5) * state.currentMultiplier;
+			const currMilkFromCows = (state.totalCows * state.currentMultiplier) + (state.totalRelaxedCows * state.currentMultiplier * 2) +  (state.totalEnlightenedCows * state.currentMultiplier * 4) +  (state.totalCows2 * state.currentMultiplier * 8);
+			const currMilkFromFields = (state.totalFields * 5 * state.currentMultiplier) +(state.totalResorts * 25 * state.currentMultiplier) +(state.totalSchools * 125 * state.currentMultiplier) +(state.totalSpaceships * 500 * state.currentMultiplier);
 			const currMilk = state.milk + currMilkFromCows + currMilkFromFields;
 			const currScore = state.totalScore + currMilkFromCows + currMilkFromFields;
 			// console.log(currScore);
