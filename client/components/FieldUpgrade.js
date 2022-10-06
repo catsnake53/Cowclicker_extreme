@@ -28,7 +28,7 @@ export function FieldUpgrade(props) {
           <div className="shopupgradeHeaders"><h2>FIELD</h2></div>}
       </div>
       {
-        (props.stage > 1) ? (
+        (props.stage > 0) ? (
           <div
             onMouseEnter={() => toggleHovering(true)}
             onMouseLeave={() => toggleHovering(false)}
@@ -44,7 +44,7 @@ export function FieldUpgrade(props) {
         ) : null
       }
       {
-        (props.stage > 2) ? (
+        (props.stage > 1) ? (
           <div
             onMouseEnter={() => toggleHovering(true)}
             onMouseLeave={() => toggleHovering(false)}
@@ -60,7 +60,7 @@ export function FieldUpgrade(props) {
         ) : null
       }
       {
-        (props.stage > 3) ? (
+        (props.stage > 2) ? (
           <div
             onMouseEnter={() => toggleHovering(true)}
             onMouseLeave={() => toggleHovering(false)}

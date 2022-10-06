@@ -32,6 +32,7 @@ const gameSaveSchema = new Schema({
 	totalSpaceships: { type: Number, require: true },
 	currentMultiplier: { type: Number, require: true },
 	cowCost: { type: Number, require: true },
+	fieldCost: { type: Number, require: true },
 	gameStage: { type: Number, require: true },
 });
 

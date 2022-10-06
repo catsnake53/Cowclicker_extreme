@@ -7,7 +7,7 @@ import { calculateActionCreator, toggleDevMode } from '../actions/actions.js';
 
 
 export function ShopContainer(props) {
-    const { milkCount, totalCows, totalRelaxedCows, totalEnglightenedCows,
+    const { milkCount, totalCows, totalRelaxedCows, totalEnlightenedCows,
         totalCows2, cowCost, fieldCost, totalFields, totalResorts,
         totalSchools, totalSpaceships, gameStage } = props;
 
@@ -15,7 +15,7 @@ export function ShopContainer(props) {
 
     const [cows, setCows] = useState(totalCows);
     const [relaxedCows, setRelaxedCows] = useState(totalRelaxedCows);
-    const [englightenedCows, setEnglightenedCows] = useState(totalEnglightenedCows);
+    const [enlightenedCows, setEnlightenedCows] = useState(totalEnlightenedCows);
     const [cows2, setCows2] = useState(totalCows2);
 
     const [fields, setFields] = useState(totalFields);
@@ -34,14 +34,14 @@ export function ShopContainer(props) {
     useEffect(() => {
         //
         if (milkCount !== milk
-            || totalCows !== cows || totalRelaxedCows !== relaxedCows || totalEnglightenedCows !== englightenedCows || totalCows2 !== cows2
+            || totalCows !== cows || totalRelaxedCows !== relaxedCows || totalEnlightenedCows !== enlightenedCows || totalCows2 !== cows2
             || totalFields !== fields || totalResorts !== resorts || totalSchools !== schools || totalSpaceships !== spaceships
             || cowCost !== cow_Cost || fieldCost !== field_Cost || gameStage !== stage) {
             setMilk(milkCount)
 
             setCows(totalCows)
             setRelaxedCows(totalRelaxedCows)
-            setEnglightenedCows(totalEnglightenedCows)
+            setEnlightenedCows(totalEnlightenedCows)
             setCows2(totalCows2)
 
             setFields(totalFields)
@@ -64,7 +64,7 @@ export function ShopContainer(props) {
                     <p id='milkCount'>Milk: <strong>{milk}</strong></p>
                     <p>Cattle: <strong>{cows}</strong></p>
                     <p>Relaxed Cattle: <strong>{relaxedCows}</strong></p>
-                    <p>Enlightened Cattle: <strong>{englightenedCows}</strong></p>
+                    <p>Enlightened Cattle: <strong>{enlightenedCows}</strong></p>
                     <p>Cattle 2.0: <strong>{cows2}</strong></p>
                     <p>Fields: <strong>{fields}</strong></p>
                     <p>Resorts: <strong>{resorts}</strong></p>
@@ -90,10 +90,10 @@ const mapStateToProps = function (state) {
         milkCount: state.cows.milk,
         totalCows: state.cows.totalCows,
         totalRelaxedCows: state.cows.totalRelaxedCows,
-        totalEnglightenedCows: state.cows.totalEnlightenedCows,
+        totalEnlightenedCows: state.cows.totalEnlightenedCows,
         totalCows2: state.cows.totalCows2,
         totalFields: state.cows.totalFields,
-        totalResorts: state.cows.totalRelaxedCows,
+        totalResorts: state.cows.totalResorts,
         totalSchools: state.cows.totalSchools,
         totalSpaceships: state.cows.totalSpaceships,
         cowCost: state.cows.cowCost,
