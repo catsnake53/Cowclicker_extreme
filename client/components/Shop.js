@@ -1,5 +1,6 @@
 import { CowUpgrade } from './CowUpgrade';
 import { FieldUpgrade } from './FieldUpgrade';
+import { Gamestage } from './Gamestage';
 import React, { useEffect, useState } from 'react';
 import { connect, useStore, useDispatch } from 'react-redux';
 import { calculateActionCreator, toggleDevMode } from '../actions/actions.js';
@@ -8,7 +9,7 @@ import { calculateActionCreator, toggleDevMode } from '../actions/actions.js';
 export function ShopContainer(props) {
     const { milkCount, totalCows, totalRelaxedCows, totalEnglightenedCows,
         totalCows2, cowCost, fieldCost, totalFields, totalResorts,
-        totalSchools, totalSpaceships } = props;
+        totalSchools, totalSpaceships, gameStage } = props;
 
     const [milk, setMilk] = useState(milkCount);
 
@@ -24,6 +25,9 @@ export function ShopContainer(props) {
 
     const [cow_Cost, setCowCost] = useState(cowCost);
     const [field_Cost, setFieldCost] = useState(fieldCost);
+
+    const [stage, setStage] = useState(gameStage)
+
     const dispatch = useDispatch();
 
 
@@ -32,13 +36,13 @@ export function ShopContainer(props) {
         if (milkCount !== milk
             || totalCows !== cows || totalRelaxedCows !== relaxedCows || totalEnglightenedCows !== englightenedCows || totalCows2 !== cows2
             || totalFields !== fields || totalResorts !== resorts || totalSchools !== schools || totalSpaceships !== spaceships
-            || cowCost !== cow_Cost || fieldCost !== field_Cost) {
+            || cowCost !== cow_Cost || fieldCost !== field_Cost || gameStage !== stage) {
             setMilk(milkCount)
 
             setCows(totalCows)
             setRelaxedCows(totalRelaxedCows)
             setEnglightenedCows(totalEnglightenedCows)
-            setCows(totalCows2)
+            setCows2(totalCows2)
 
             setFields(totalFields)
             setResorts(totalResorts)
@@ -47,6 +51,8 @@ export function ShopContainer(props) {
 
             setCowCost(cowCost)
             setFieldCost(fieldCost)
+
+            setStage(gameStage)
         }
     })
 
@@ -70,9 +76,9 @@ export function ShopContainer(props) {
             <div className="shopDiv">
                 <div><h2>Shop</h2></div>
                 <div className="shopOptions">
-                    <CowUpgrade totalCowCost={cow_Cost} />
-                    <FieldUpgrade totalfieldCost={field_Cost} />
-                    {/* New multiplier component */}
+                    {(stage < 4) ? <Gamestage stage={stage} /> : null}
+                    <CowUpgrade totalCowCost={cow_Cost} stage={stage} />
+                    <FieldUpgrade totalfieldCost={field_Cost} stage={stage} />
                 </div>
             </div>
         </div>
@@ -92,6 +98,7 @@ const mapStateToProps = function (state) {
         totalSpaceships: state.cows.totalSpaceships,
         cowCost: state.cows.cowCost,
         fieldCost: state.cows.fieldCost,
+        gameStage: state.cows.gameStage
     }
 }
 
