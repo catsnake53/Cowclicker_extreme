@@ -10,12 +10,36 @@ export const addCowActionCreator = () => ({
 	type: types.ADD_COW,
 });
 
+export const addRelaxedCowActionCreator = () => ({
+	type: types.ADD_RELAXED_COW,
+});  
+
+export const addEnlightenedCowActionCreator = () => ({
+	type: types.ADD_ENLIGHTENED_COW,
+});  
+
+export const addCow2ActionCreator = () => ({
+	type: types.ADD_COW_TWO,
+});  
+
 export const clickCowActionCreator = () => ({
 	type: types.CLICK,
 });
 
 export const addFieldActionCreator = () => ({
 	type: types.ADD_FIELD,
+});
+
+export const addResortActionCreator = () => ({
+	type: types.ADD_RESORT,
+});
+
+export const addSchoolActionCreator = () => ({
+	type: types.ADD_SCHOOL,
+});
+
+export const addSpaceshipActionCreator = () => ({
+	type: types.ADD_SPACESHIP,
 });
 
 export const toggleDevMode = () => ({
@@ -37,4 +61,5 @@ export const loggedInActionCreator = () => ({
 
 export const gameStageLevelUp = () => ({
 	type: types.GAME_STAGE_LEVEL_UP,
-})
+});  
+

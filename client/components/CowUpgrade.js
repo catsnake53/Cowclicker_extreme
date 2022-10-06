@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useStore } from 'react-redux';
-import { addCowActionCreator } from '../actions/actions.js';
+import { addCowActionCreator, gameStageLevelUp } from '../actions/actions.js';
 
 export function CowUpgrade(props) {
   const { totalCowCost } = props;
@@ -17,7 +17,11 @@ export function CowUpgrade(props) {
     <div
       onMouseEnter={() => toggleHovering(true)}
       onMouseLeave={() => toggleHovering(false)}
-      onClick={() => { dispatch(addCowActionCreator()) }} id="cowUpgrade" className="shopButton">
+      onClick={() => {
+        dispatch(addCowActionCreator());
+        dispatch(gameStageLevelUp());
+    
+      }} id="cowUpgrade" className="shopButton">
       {isHovering &&
         <div className="hoverDiv">
           <img alt="" height="35px" src="https://media.discordapp.net/attachments/1025460102670594119/1026563814637961287/unknown.png" className="" />
