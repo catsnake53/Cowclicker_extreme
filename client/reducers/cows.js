@@ -5,13 +5,13 @@ const initialState = {
 	devMode: false,
 	milk: 0,
 	totalCows: 0,
-	totalRelaxedCows:  0,
+	totalRelaxedCows: 0,
 	totalEnlightenedCows: 0,
 	totalCows2: 0,
 	totalFields: 0,
 	totalResorts: 0,
 	totalSchools: 0,
-	totalSpaceships: 0,              
+	totalSpaceships: 0,
 	currentMultiplier: 1,
 	loggedIn: false,
 	username: '',
@@ -39,6 +39,14 @@ const cowsReducers = (state = initialState, action) => {
 				currentMultiplier,
 				cowCost,
 				fieldCost,
+				totalCows2,
+				totalEnlightenedCows,
+				totalRelaxedCows,
+				totalResorts,
+				totalSchools,
+				totalSpaceships,
+				gameStage,
+				totalScore
 			} = action.payload;
 			console.log('Game Loaded.');
 			return {
@@ -48,7 +56,15 @@ const cowsReducers = (state = initialState, action) => {
 				totalFields,
 				currentMultiplier,
 				cowCost,
-				fieldCost
+				fieldCost,
+				totalCows2,
+				totalEnlightenedCows,
+				totalRelaxedCows,
+				totalResorts,
+				totalSchools,
+				totalSpaceships,
+				gameStage,
+				totalScore
 			};
 		};
 		case types.ADD_COW: {
@@ -66,11 +82,11 @@ const cowsReducers = (state = initialState, action) => {
 			};
 		};
 		case types.ADD_RELAXED_COW: {
-			if (state.milk < state.cowCost*1.25 ) return { ...state };
-			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			if (state.milk < state.cowCost * 1.25) return { ...state };
+			const newCowCost = Math.ceil(state.cowCost * 1.08);
 			const newRelaxedCowCount = state.totalRelaxedCows + 1;
-			const newMilkCount = state.milk - state.cowCost*1.25;
-			return{
+			const newMilkCount = state.milk - Math.ceil(state.cowCost * 1.25);
+			return {
 				...state,
 				milk: newMilkCount,
 				totalRelaxedCows: newRelaxedCowCount,
@@ -78,11 +94,11 @@ const cowsReducers = (state = initialState, action) => {
 			};
 		};
 		case types.ADD_ENLIGHTENED_COW: {
-			if (state.milk < state.cowCost*1.5) return { ...state };
-			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			if (state.milk < state.cowCost * 1.5) return { ...state };
+			const newCowCost = Math.ceil(state.cowCost * 1.08);
 			const newEnlightenedCowCount = state.totalEnlightenedCows + 1;
-			const newMilkCount = state.milk - state.cowCost*1.50;
-			return{
+			const newMilkCount = state.milk - Math.ceil(state.cowCost * 1.50);
+			return {
 				...state,
 				milk: newMilkCount,
 				totalEnlightenedCows: newEnlightenedCowCount,
@@ -90,11 +106,11 @@ const cowsReducers = (state = initialState, action) => {
 			};
 		};
 		case types.ADD_COW_TWO: {
-			if (state.milk < state.cowCost*2) return { ...state };
-			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			if (state.milk < state.cowCost * 2) return { ...state };
+			const newCowCost = Math.ceil(state.cowCost * 1.08);
 			const newCow2Count = state.totalCows2 + 1;
-			const newMilkCount = state.milk - state.cowCost*2;
-			return{
+			const newMilkCount = state.milk - (state.cowCost * 2);
+			return {
 				...state,
 				milk: newMilkCount,
 				totalCows2: newCow2Count,
@@ -104,7 +120,7 @@ const cowsReducers = (state = initialState, action) => {
 		case types.ADD_FIELD: {
 			if (state.milk < state.fieldCost) return { ...state };
 			const newFieldCount = state.totalFields + 1;
-			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newMilkCount = state.milk - state.fieldCost;
 			return {
 				...state,
@@ -114,10 +130,11 @@ const cowsReducers = (state = initialState, action) => {
 			}
 		};
 		case types.ADD_RESORT: {
-			if (state.milk < state.fieldCost*50) return { ...state };
-			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			// need to update to accurate resort cost after test
+			if (state.milk < state.fieldCost) return { ...state };
+			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newResortCount = state.totalResorts + 1;
-			const newMilkCount = state.milk - state.fieldCost*50;
+			const newMilkCount = state.milk - (state.fieldCost);
 			return {
 				...state,
 				totalResorts: newResortCount,
@@ -126,10 +143,11 @@ const cowsReducers = (state = initialState, action) => {
 			}
 		};
 		case types.ADD_SCHOOL: {
-			if (state.milk < state.fieldCost*100) return { ...state };
-			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			// need to update to accurate school cost after test
+			if (state.milk < state.fieldCost) return { ...state };
+			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newSchoolCount = state.totalSchools + 1;
-			const newMilkCount = state.milk - state.fieldCost*100;
+			const newMilkCount = state.milk - (state.fieldCost);
 			return {
 				...state,
 				totalSchools: newSchoolCount,
@@ -138,10 +156,11 @@ const cowsReducers = (state = initialState, action) => {
 			}
 		};
 		case types.ADD_SPACESHIP: {
-			if (state.milk < state.fieldCost*1000) return { ...state };
-			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
-			const newSpaceshipCount = state.totalSpaceships+ 1;
-			const newMilkCount = state.milk - state.fieldCost*1000;
+			// need to update to accurate spaceship cost after test
+			if (state.milk < state.fieldCost) return { ...state };
+			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
+			const newSpaceshipCount = state.totalSpaceships + 1;
+			const newMilkCount = state.milk - (state.fieldCost);
 			return {
 				...state,
 				totalSpaceships: newSpaceshipCount,
@@ -159,8 +178,8 @@ const cowsReducers = (state = initialState, action) => {
 			// const milkFromFields = state.totalFields * fieldMultiplier;
 			// currMilk = currMilk + (milkFromCows + milkFromFields);
 			//temporary simple version
-			const currMilkFromCows = (state.totalCows * state.currentMultiplier) + (state.totalRelaxedCows * state.currentMultiplier * 2) +  (state.totalEnlightenedCows * state.currentMultiplier * 4) +  (state.totalCows2 * state.currentMultiplier * 8);
-			const currMilkFromFields = (state.totalFields * 5 * state.currentMultiplier) +(state.totalResorts * 25 * state.currentMultiplier) +(state.totalSchools * 125 * state.currentMultiplier) +(state.totalSpaceships * 500 * state.currentMultiplier);
+			const currMilkFromCows = (state.totalCows * state.currentMultiplier) + (state.totalRelaxedCows * state.currentMultiplier * 2) + (state.totalEnlightenedCows * state.currentMultiplier * 4) + (state.totalCows2 * state.currentMultiplier * 8);
+			const currMilkFromFields = (state.totalFields * 5 * state.currentMultiplier) + (state.totalResorts * 25 * state.currentMultiplier) + (state.totalSchools * 125 * state.currentMultiplier) + (state.totalSpaceships * 500 * state.currentMultiplier);
 			const currMilk = state.milk + currMilkFromCows + currMilkFromFields;
 			const currScore = state.totalScore + currMilkFromCows + currMilkFromFields;
 			// console.log(currScore);
