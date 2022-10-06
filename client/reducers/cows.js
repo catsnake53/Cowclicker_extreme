@@ -5,7 +5,13 @@ const initialState = {
 	devMode: false,
 	milk: 0,
 	totalCows: 0,
+	totalRelaxedCows:  0,
+	totalEnlightenedCows: 0,
+	totalCows2: 0,
 	totalFields: 0,
+	totalResorts: 0,
+	totalSchools: 0,
+	totalSpaceships: 0,              
 	currentMultiplier: 1,
 	loggedIn: false,
 	username: '',
@@ -49,7 +55,7 @@ const cowsReducers = (state = initialState, action) => {
 			if (state.milk < state.cowCost) return { ...state };
 			//purchase new cow
 			const newCowCount = state.totalCows + 1;
-			const newCowCost = Math.ceil((state.cowCost * 1.3));
+			const newCowCost = Math.ceil((state.cowCost * 1.08));
 			const newMilkCount = state.milk - state.cowCost;
 			// console.log('newMilkCount, newCowCount', newMilkCount, newCowCount);
 			return {
@@ -59,9 +65,44 @@ const cowsReducers = (state = initialState, action) => {
 				cowCost: newCowCost,
 			};
 		};
+		case types.ADD_RELAXED_COW: {
+			if (state.milk < state.cowCost*1.25 ) return { ...state };
+			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			const newRelaxedCowCount = state.totalRelaxedCows + 1;
+			const newMilkCount = state.milk - state.cowCost*1.25;
+			return{
+				...state,
+				milk: newMilkCount,
+				totalRelaxedCows: newRelaxedCowCount,
+				cowCost: newCowCost,
+			};
+		};
+		case types.ADD_ENLIGHTENED_COW: {
+			if (state.milk < state.cowCost*1.5) return { ...state };
+			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			const newEnlightenedCowCount = state.totalEnlightenedCows + 1;
+			const newMilkCount = state.milk - state.cowCost*1.50;
+			return{
+				...state,
+				milk: newMilkCount,
+				totalEnlightenedCows: newEnlightenedCowCount,
+				cowCost: newCowCost,
+			};
+		};
+		case types.ADD_COW_TWO: {
+			if (state.milk < state.cowCost*2) return { ...state };
+			const newCowCost = Math.ceil((state.cowCost * 1.08));
+			const newCow2Count = state.totalCows2 + 1;
+			const newMilkCount = state.milk - state.cowCost*2;
+			return{
+				...state,
+				milk: newMilkCount,
+				totalCows2: newCow2Count,
+				cowCost: newCowCost,
+			};
+		};
 		case types.ADD_FIELD: {
 			if (state.milk < state.fieldCost) return { ...state };
-
 			const newFieldCount = state.totalFields + 1;
 			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
 			const newMilkCount = state.milk - state.fieldCost;
@@ -71,7 +112,43 @@ const cowsReducers = (state = initialState, action) => {
 				fieldCost: newFieldCost,
 				milk: newMilkCount,
 			}
-		}
+		};
+		case types.ADD_RESORT: {
+			if (state.milk < state.fieldCost*50) return { ...state };
+			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			const newResortCount = state.totalResorts + 1;
+			const newMilkCount = state.milk - state.fieldCost*50;
+			return {
+				...state,
+				totalResorts: newResortCount,
+				fieldCost: newFieldCost,
+				milk: newMilkCount,
+			}
+		};
+		case types.ADD_SCHOOL: {
+			if (state.milk < state.fieldCost*100) return { ...state };
+			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			const newSchoolCount = state.totalSchools + 1;
+			const newMilkCount = state.milk - state.fieldCost*100;
+			return {
+				...state,
+				totalSchools: newSchoolCount,
+				fieldCost: newFieldCost,
+				milk: newMilkCount,
+			}
+		};
+		case types.ADD_SPACESHIP: {
+			if (state.milk < state.fieldCost*1000) return { ...state };
+			const newFieldCost = Math.ceil((state.fieldCost * 1.3));
+			const newSpaceshipCount = state.totalSpaceships+ 1;
+			const newMilkCount = state.milk - state.fieldCost*1000;
+			return {
+				...state,
+				totalSpaceships: newSpaceshipCount,
+				fieldCost: newFieldCost,
+				milk: newMilkCount,
+			}
+		};
 		case types.CALCULATE: { //changes Milk count
 			//should be invoked every second, invocation should happen inside shop component 
 			//(whereever stats are being rendered)
@@ -127,6 +204,7 @@ const cowsReducers = (state = initialState, action) => {
 		case types.GAME_STAGE_LEVEL_UP: {
 			const newStage = state.gameStage += 1;
 			const newMultiplier = state.currentMultiplier += 2;
+			console.log(newStage);
 			return {
 				...state,
 				gameStage: newStage,
