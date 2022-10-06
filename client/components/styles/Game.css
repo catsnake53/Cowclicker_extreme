@@ -62,7 +62,7 @@
 
 .infoDiv {
     border: 1px solid black;
-    height: 27.5%;
+    height: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -194,3 +194,18 @@
   top: 50px;
 }
 
+.statsDiv {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.statsDiv p {
+  width: 50%;
+}
+
+#milkCount {
+  width: 100%;
+  text-align: center;
+}

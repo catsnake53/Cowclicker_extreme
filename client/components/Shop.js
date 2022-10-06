@@ -11,6 +11,7 @@ export function ShopContainer(props) {
         totalSchools, totalSpaceships } = props;
 
     const [milk, setMilk] = useState(milkCount);
+
     const [cows, setCows] = useState(totalCows);
     const [relaxedCows, setRelaxedCows] = useState(totalRelaxedCows);
     const [englightenedCows, setEnglightenedCows] = useState(totalEnglightenedCows);
@@ -28,13 +29,24 @@ export function ShopContainer(props) {
 
     useEffect(() => {
         //
-        if (milkCount !== milk || totalCows !== cows ||
-            cowCost !== cow_Cost || fields !== totalFields
-            || fields !== totalFields || resorts !== totalResorts || schools !== totalSchools || spaceships !== totalSpaceships) {
+        if (milkCount !== milk
+            || totalCows !== cows || totalRelaxedCows !== relaxedCows || totalEnglightenedCows !== englightenedCows || totalCows2 !== cows2
+            || totalFields !== fields || totalResorts !== resorts || totalSchools !== schools || totalSpaceships !== spaceships
+            || cowCost !== cow_Cost || fieldCost !== field_Cost) {
             setMilk(milkCount)
+
             setCows(totalCows)
+            setRelaxedCows(totalRelaxedCows)
+            setEnglightenedCows(totalEnglightenedCows)
+            setCows(totalCows2)
+
             setFields(totalFields)
+            setResorts(totalResorts)
+            setSchools(totalSchools)
+            setSpaceships(totalSpaceships)
+
             setCowCost(cowCost)
+            setFieldCost(fieldCost)
         }
     })
 
@@ -43,15 +55,15 @@ export function ShopContainer(props) {
             <div className="infoDiv">
                 <h2>Stats</h2>
                 <div className="statsDiv">
-                    <p>Milk: <strong>{milk}</strong></p>
+                    <p id='milkCount'>Milk: <strong>{milk}</strong></p>
                     <p>Cattle: <strong>{cows}</strong></p>
-                    <p>Relaxed Cattle: <strong>{cows}</strong></p>
-                    <p>Enlightened Cattle: <strong>{cows}</strong></p>
-                    <p>Cattle 2.0: <strong>{cows}</strong></p>
+                    <p>Relaxed Cattle: <strong>{relaxedCows}</strong></p>
+                    <p>Enlightened Cattle: <strong>{englightenedCows}</strong></p>
+                    <p>Cattle 2.0: <strong>{cows2}</strong></p>
                     <p>Fields: <strong>{fields}</strong></p>
-                    <p>Resorts: <strong>{fields}</strong></p>
-                    <p>Schools: <strong>{fields}</strong></p>
-                    <p>Spaceships: <strong>{fields}</strong></p>
+                    <p>Resorts: <strong>{resorts}</strong></p>
+                    <p>Schools: <strong>{schools}</strong></p>
+                    <p>Spaceships: <strong>{spaceships}</strong></p>
 
                 </div>
             </div>
@@ -59,7 +71,7 @@ export function ShopContainer(props) {
                 <div><h2>Shop</h2></div>
                 <div className="shopOptions">
                     <CowUpgrade totalCowCost={cow_Cost} />
-                    <FieldUpgrade totalfieldCost={fieldCost} />
+                    <FieldUpgrade totalfieldCost={field_Cost} />
                     {/* New multiplier component */}
                 </div>
             </div>
