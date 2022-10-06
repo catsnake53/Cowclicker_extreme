@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { LoginPage } from './Login'
 import { Game } from './Game';
+import Endgame from './Endgame';
 import { connect, useStore, useDispatch } from 'react-redux';
 import { loadGameActionCreator } from '../actions/actions.js';
 
@@ -30,7 +31,7 @@ function App(props) {
 			fetch(url, {
 				method: 'GET',
 				headers: {
-					'Accept': "application/json, text/plain, */*",
+					'Accept': "application/json, text/plain,  */*",
 					'Content-Type': 'application/json',
 				},
 			})
@@ -86,12 +87,13 @@ function App(props) {
 
 	//check if state authentication returns true, if yes, render game, otherwise render login page
 	return (
-		<>
+		<div className = {`stage${props.savedState.gameStage}`}>
 			{/* {LoggedIn && <div className="saveGameContainer">
 			<button onClick={saveGameHandler} id="saveGame">Save</button>
 		</div>} */}
-			{LoggedIn ? <Game saveGame={saveGameHandler} stats={props.savedState} /> : <LoginPage loginHandler={loginHandler} />}
-		</>
+			{(props.savedState.gameStage === 4) ? <Endgame/> : (LoggedIn ? <Game saveGame={saveGameHandler} stats={props.savedState} /> : <LoginPage loginHandler={loginHandler} />)}
+			
+		</div>
 	);
 };
 

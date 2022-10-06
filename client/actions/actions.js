@@ -61,5 +61,9 @@ export const loggedInActionCreator = () => ({
 
 export const gameStageLevelUp = () => ({
 	type: types.GAME_STAGE_LEVEL_UP,
-});  
+});
+
+export const resetGameActionCreator = () => ({
+	type: types.RESET_GAME,
+})
 

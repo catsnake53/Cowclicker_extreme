@@ -13,4 +13,5 @@ export const ADD_SCHOOL = 'ADD_SCHOOL';
 export const ADD_SPACESHIP = 'ADD_SPACESHIP';
 export const TOGGLE_DEV = 'TOGGLE_DEV';
 export const GAME_STAGE_LEVEL_UP = 'GAME_STAGE_LEVEL_UP';
+export const RESET_GAME = 'RESET_GAME';
 

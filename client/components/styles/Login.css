@@ -1,7 +1,8 @@
-body {
+body{
     /* background-color: green; */
     height: 91vh;
     overflow-y: hidden;
+    overflow-x: hidden;
     background-image: url('https://i.imgur.com/TUKWVFl.jpg');
     background-position:center top;
     background-size: cover;
@@ -10,8 +11,61 @@ body {
     z-index: 0;
 }
 
-
-
+.stage0{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    scale: 1.02;
+    background-image: url('https://www.travelcaffeine.com/wp-content/uploads/2017/02/switzerland-cows-lauterbrunnen-berner-oberland-20170217196-795x500.jpg');
+    background-position:center top;
+    background-size: cover;
+    background-attachment:fixed;
+}
+.stage1{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    scale: 1.02;
+    background-image: url('https://easychannel.it/mss/mss_renderimg.php?id=10363&src=2b608a18b64dd1c789ee8b36f7b46214.jpg&w=1024&h=600&m=1');
+    background-position:center top;
+    background-size: cover;
+    background-attachment:fixed;
+}
+.stage2{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    scale: 1.02;
+    background-image: url('https://ourvision.stanford.edu/sites/g/files/sbiybj22576/files/styles/breakpoint_2xl_2x/public/media/image/new_vision_medium_0.jpg?itok=w8YZYYqP');
+    background-position:center top;
+    background-size: cover;
+    background-attachment:fixed;
+}
+.stage3{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    scale: 1.02;
+    background-image: url('https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iMwRHkdhvVrE/v0/1200x-1.jpg');
+    background-position:center top;
+    background-size: cover;
+    background-attachment:fixed;
+}
+.stage4{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    scale: 1.02;
+    background-image: url('https://cdn.discordapp.com/attachments/1027250698016010290/1027728609269534771/pexels-alberlan-barros-7311920.jpg');
+    background-position:center top;
+    background-size: cover;
+    background-attachment:fixed;
+}
 
 #root {
     display: flex;
@@ -102,8 +156,13 @@ body {
     border: none;
     background-color: lightskyblue;
     border-radius: 15px;
+    border: 1px solid black;
     width: 150px;
     height: 40px;
+}
+
+.loginButton:hover {
+    cursor: pointer;
 }
 
 .signupToggle {
@@ -116,9 +175,16 @@ body {
     border: none;
     background-color: lightskyblue;
     border-radius: 15px;
+    border: 1px solid black;
+    margin: 5px;
     width: 150px;
     height: 40px;
 }
+
+.signupButton:hover {
+    cursor: pointer;
+}
+
 
 .returnButton {
     border: none;
@@ -140,7 +206,7 @@ body {
 /* Leaderboard Styling */
 .leaderboard{
     background-color: #FFD384;
-    color: white;
+    color: black;
     padding: 10px;
     border: thin solid black;
     border-radius: 15px;
@@ -150,3 +216,9 @@ body {
 .leaderboard-title {
     text-align: center;
 }
+
+/* Background Images */
+.endgame{
+    text-align: center;
+    color: white;
+  }

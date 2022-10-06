@@ -63,13 +63,13 @@ export function ShopContainer(props) {
                 <div className="statsDiv">
                     <p id='milkCount'>Milk: <strong>{milk}</strong></p>
                     <p>Cattle: <strong>{cows}</strong></p>
-                    <p>Relaxed Cattle: <strong>{relaxedCows}</strong></p>
-                    <p>Enlightened Cattle: <strong>{enlightenedCows}</strong></p>
-                    <p>Cattle 2.0: <strong>{cows2}</strong></p>
+                    {(relaxedCows !== 0) ? <p>Relaxed Cattle: <strong>{relaxedCows}</strong></p> : <></>}
+                    {(enlightenedCows !== 0) ? <p>Enlightened Cattle: <strong>{enlightenedCows}</strong></p> : <></>}
+                    {(cows2) ? <p>Cattle 2.0: <strong>{cows2}</strong></p> : <></>}
                     <p>Fields: <strong>{fields}</strong></p>
-                    <p>Resorts: <strong>{resorts}</strong></p>
-                    <p>Schools: <strong>{schools}</strong></p>
-                    <p>Spaceships: <strong>{spaceships}</strong></p>
+                    {(resorts) ? <p>Resorts: <strong>{resorts}</strong></p> : <></>}
+                    {(schools) ? <p>Schools: <strong>{schools}</strong></p> : <></>}
+                    {(spaceships) ? <p>Spaceships: <strong>{spaceships}</strong></p> : <></>}
 
                 </div>
             </div>

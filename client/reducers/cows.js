@@ -230,6 +230,31 @@ const cowsReducers = (state = initialState, action) => {
 				currentMultiplier: newMultiplier,
 			}
 		}
+		case types.RESET_GAME: {
+			const oldUsername = state.username;
+			const oldScore = state.totalScore
+			return {
+				...state,
+				totalScore: oldScore,
+				devMode: false,
+				milk: 0,
+				totalCows: 0,
+				totalRelaxedCows: 0,
+				totalEnlightenedCows: 0,
+				totalCows2: 0,
+				totalFields: 0,
+				totalResorts: 0,
+				totalSchools: 0,
+				totalSpaceships: 0,
+				currentMultiplier: 1,
+				loggedIn: true,
+				username: oldUsername,
+				cowCost: 10,
+				fieldCost: 100,
+				gameStage: 0,
+			}
+		}
+
 		default: {
 			return state;
 		};
