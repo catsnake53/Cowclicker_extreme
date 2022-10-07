@@ -134,7 +134,7 @@ const cowsReducers = (state = initialState, action) => {
 			if (state.milk < state.fieldCost) return { ...state };
 			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newResortCount = state.totalResorts + 1;
-			const newMilkCount = state.milk - (state.fieldCost);
+			const newMilkCount = state.milk - (state.fieldCost * 2);
 			return {
 				...state,
 				totalResorts: newResortCount,
@@ -147,7 +147,7 @@ const cowsReducers = (state = initialState, action) => {
 			if (state.milk < state.fieldCost) return { ...state };
 			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newSchoolCount = state.totalSchools + 1;
-			const newMilkCount = state.milk - (state.fieldCost);
+			const newMilkCount = state.milk - (state.fieldCost * 3);
 			return {
 				...state,
 				totalSchools: newSchoolCount,
@@ -160,7 +160,7 @@ const cowsReducers = (state = initialState, action) => {
 			if (state.milk < state.fieldCost) return { ...state };
 			const newFieldCost = Math.ceil(state.fieldCost * 1.3);
 			const newSpaceshipCount = state.totalSpaceships + 1;
-			const newMilkCount = state.milk - (state.fieldCost);
+			const newMilkCount = state.milk - (state.fieldCost * 4);
 			return {
 				...state,
 				totalSpaceships: newSpaceshipCount,
