@@ -44,7 +44,7 @@ export function LoginPage(props) {
 
         return (
             <div className="main">
-                <h1>Cow Clicker EXTREME</h1>
+                <h1>Cow Clicker EXTREME+</h1>
                 <h3>A Cowplete Video Game Experience</h3>
                 <div className="LoginDiv">
                 <h2 id="loginHeader">{signup ? 'Sign Up!' : 'MOOGIN'}</h2>

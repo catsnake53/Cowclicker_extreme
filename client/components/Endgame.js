@@ -24,11 +24,11 @@ function Endgame (props) {
             </div>
         </div>
         : <div>
-        <h2> Cow Clicker Extreme: </h2>
+        <h2> Cow Clicker EXTREME+: </h2>
         <h2> A game originally made by Jackie He, Lisa Tian, Matthew Antosiak, Raymond Kim, and Zoe Harper.</h2>
         <h2> Iterated upon by Cesar Quintanilla, Cera Barrow, Kat Tsai, and Tommy Li.</h2>
         <h2>Enjoy...</h2>
-        <img src="https://www.citypng.com/public/uploads/preview/hd-black-white-cow-eating-grass-png-31625259972yvjn4wmaj3.png"></img>
+        <img src="https://cdn.discordapp.com/attachments/1020021823703875706/1027736138271694950/cowclick.png" height="600" width="800"></img>
         </div>}
         </div>
     )
