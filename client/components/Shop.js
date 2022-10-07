@@ -4,6 +4,7 @@ import { Gamestage } from './Gamestage';
 import React, { useEffect, useState } from 'react';
 import { connect, useStore, useDispatch } from 'react-redux';
 import { calculateActionCreator, toggleDevMode } from '../actions/actions.js';
+import { ShopButton } from './ShopButton';
 
 
 export function ShopContainer(props) {
@@ -29,10 +30,9 @@ export function ShopContainer(props) {
     const [stage, setStage] = useState(gameStage)
 
     const dispatch = useDispatch();
-
+    const stageUpgradeName = '';
 
     useEffect(() => {
-        //
         if (milkCount !== milk
             || totalCows !== cows || totalRelaxedCows !== relaxedCows || totalEnlightenedCows !== enlightenedCows || totalCows2 !== cows2
             || totalFields !== fields || totalResorts !== resorts || totalSchools !== schools || totalSpaceships !== spaceships
@@ -76,7 +76,8 @@ export function ShopContainer(props) {
             <div className="shopDiv">
                 <div><h2>Shop</h2></div>
                 <div className="shopOptions">
-                    {(stage < 4) ? <Gamestage stage={stage} /> : null}
+                    {/* {(stage < 4) ? <Gamestage stage={stage} /> : null} */}
+                    {(stage < 4) ? <ShopButton cost={10000} itemName={stageUpgradeName} type={'stage'} stage={stage} /> : null}
                     <CowUpgrade totalCowCost={cow_Cost} stage={stage} />
                     <FieldUpgrade totalfieldCost={field_Cost} stage={stage} />
                 </div>

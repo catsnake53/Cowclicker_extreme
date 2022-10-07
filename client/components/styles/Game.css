@@ -73,6 +73,12 @@
   margin: 0;
 }
 
+svg {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}
+
 /* .hoverDiv {
   /* position: absolute;
   display: flex;
@@ -127,6 +133,8 @@
 .shopOptions {
     display: flex;
     gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     flex-direction: column;
     align-items: center;
     /* height: 100%; */
