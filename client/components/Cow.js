@@ -56,7 +56,7 @@ function CowContainer(props) {
     setTinyCows(generateCow(props.stats.totalCows, 'cow'));
     setRelaxedCows(generateCow(props.stats.totalRelaxedCows, 'relax'));
     setEnlightenedCows(generateCow(props.stats.totalEnlightenedCows, 'enlight'));
-    setCows2(generateCow(props.stats.cows2, 'two'));
+    setCows2(generateCow(props.stats.totalCows2, 'two'));
 
   }, [props.stats.totalCows, props.stats.totalRelaxedCows, props.stats.totalEnlightenedCows, props.stats.totalCows2]);
 
